@@ -36,6 +36,7 @@ while read -r date time dir file; do
 
 		printf "\nResizing file into the $small_dir folder\n"
 		# Code to resize image goes here
+		convert $changed_abs -resize 1920x1080 $small_dir
 	fi
 
 		
