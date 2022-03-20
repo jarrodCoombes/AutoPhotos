@@ -14,8 +14,8 @@ if ! [ $(id -u) = 0 ]
 fi
 
 
-inotifywait -mr -e create,close_write /shares/Photos --includei "\.jpg|\.jpeg" |
-while read -r dir file; do
+inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e create,close_write /shares/Photos --includei "\.jpg|\.jpeg" |
+while read -r date time dir file; do
     changed_abs=${dir}${file}
     small_dir=${dir}${target}/
 	
