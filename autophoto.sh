@@ -38,8 +38,9 @@ while read -r date time dir file; do
 
 		printf "\nResizing file into the $small_dir folder\n"
 		# Code to resize image goes here
-		printf "\n  Converting: $changed_abs /n  Output Size:$output_size /n  Output File: $output_file/n" 
+		printf "\n  Converting: $changed_abs \n  Output Size:$output_size \n  Output File: $output_file\n" 
 		convert $changed_abs -resize $output_size $output_file
+		printf "\nDone\n\n"
 	fi
 
 		
