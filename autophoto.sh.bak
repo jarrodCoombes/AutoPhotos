@@ -1,7 +1,5 @@
 #!/bin/sh
 
-
-
 cwd=$(pwd)
 
 inotifywait -mr --timefmt '%d/%m/%y %H:%M' --format '%T %w %f' -e close_write /tmp/test |

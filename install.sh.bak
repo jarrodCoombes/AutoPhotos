@@ -3,6 +3,6 @@
 git fetch origin main
 git reset --hard origin/main
 
-cp autophoto.sh /user/local/bin/
-chmod +x /user/local/bin/autophoto.sh
+cp autophoto.sh /usr/local/bin/
+chmod +x /usr/local/bin/autophoto.sh
 
