@@ -1,5 +1,8 @@
 #!/bin/sh
 
-cp autophoto.sh /usr/local/bin/
-chmod +x /usr/local/bin/autophoto.sh
+ipath=/usr/local/bin/
+
+echo Copying autophoto.sh to $ipath
+cp autophoto.sh $ipath
+chmod +x $ipath/autophoto.sh
 
