@@ -17,7 +17,7 @@ fi
 
 inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e close_write /shares/Photos --includei "\.jpg|\.jpeg" |
 while read -r date time dir file; do
-    dir=(echo $dir | sed 's! !\\ !g')
+    dir=$(echo $dir | sed 's! !\\ !g')
 	changed_abs=${dir}${file}
     small_dir=${dir}${target}/
 	output_file=${small_dir}1080-${file}
