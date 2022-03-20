@@ -36,7 +36,7 @@ while read -r date time changed_abs; do
 		else
 			printf "\nCreating $small_dir \n"
 			mkdir "$small_dir"
-			chmod "777 $small_dir"
+			chmod 777 "$small_dir"
 		fi
 
 		printf "\nResizing file into the $small_dir folder\n"
