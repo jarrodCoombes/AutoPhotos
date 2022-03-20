@@ -2,7 +2,10 @@
 
 version=0.1.13
 
-printf "\n\n Version $version \n\n\n"
+if [$1 == "-v" ]; then
+	printf "\n\n Version $version \n\n\n"
+	exit
+fi
 
 cwd=$(pwd)
 target=resized
