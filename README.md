@@ -2,8 +2,8 @@
 
 ## Requirements
 
--inotifywait version 3.20.2.2 or later
--imagemagick version 6
+- inotifywait version 3.20.2.2 or later
+- imagemagick version 6
 
 
 ### Install inotifywait from source  
