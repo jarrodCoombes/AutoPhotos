@@ -23,13 +23,13 @@ while read -r date time dir file; do
 
     # Check to make sure the file is not allready in $small_dir    
     if [ "$(echo ${dir} | awk '{print $(NF-1)}' FS=/)" = "$target" ]; then
-		printf "\nFile is in the $small_dir folder, nothing to do\n"
+		printf "\nFile is in the $small_dir folder, nothing to do.\n"
 	else
 		#Check to see if $small_dir exists or not
 		if [ -d "$small_dir" -a ! -h "$small_dir" ]; then
-			echo "$small_dir found, nothing to do."
+			printf "\nFolder $small_dir found, no need to create it.\n"
 		else
-			echo "Creating $small_dir"
+			printf "\nCreating $small_dir \n"
 			mkdir $small_dir
 			chmod 777 $small_dir
 		fi
