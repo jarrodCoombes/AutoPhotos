@@ -25,7 +25,7 @@ while read -r date time dir file; do
     
 	echo ${dir##*/} ${target} -- Are they same??
 	
-	if [ "${dir##*/}" = "$target" ]; then
+	if [ "$(echo ${dir} | awk '{print $(NF-1)}' FS=/)" = "$target" ]; then
 		printf "\nFile is in the $small_dir folder, nothing to do\n"
 	else
 		printf "\nResizing file into the $small_dir folder\n"
