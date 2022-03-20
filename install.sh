@@ -4,7 +4,7 @@ ipath=/usr/local/bin/
 
 #Check to make sure we're being run as root
 if ! [ $(id -u) = 0 ]
-  then echo "Please run as root"
+  then printf "\nPlease run as root\n"
   exit
 fi
 
