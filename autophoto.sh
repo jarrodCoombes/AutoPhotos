@@ -1,10 +1,11 @@
 #!/bin/sh
 
-version=0.1.2
+version=0.1.3
 
 printf "\n\n Version $version \n\n\n"
 
 cwd=$(pwd)
+target=resized
 
 #Check to make sure we're being run as root
 if ! [ $(id -u) = 0 ]
@@ -16,7 +17,7 @@ fi
 inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e close_write /shares/Photos --includei "\.jpg" |
 while read -r date time dir file; do
        changed_abs=${dir}${file}
-       small_dir=${dir}small
+       small_dir=${dir}${target}
 	   #changed_rel=${changed_abs#"$cwd"/}
 
        printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  small_dir=$small_dir \n"
