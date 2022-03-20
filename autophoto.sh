@@ -23,7 +23,7 @@ while read -r date time dir file; do
 
     # Check to make sure the file is not allready in $small_dir    
     
-	echo "${dir##*/} $target "Are they same??"
+	echo ${dir##*/} $target -- Are they same??
 	
 	if [ "${dir##*/}" = "$target" ]; then
 		printf "\nFile is in the $small_dir folder, nothing to do\n"
