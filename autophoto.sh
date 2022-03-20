@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=0.1.9
+version=0.1.10
 
 printf "\n\n Version $version \n\n\n"
 
