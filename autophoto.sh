@@ -1,9 +1,9 @@
 #!/bin/sh
 
-version=0.1.13
+version=0.1.15
 
-if [$1 == "-v" ]; then
-	printf "\n\n Version $version \n\n\n"
+if [ "$1" = "-v" ]; then
+	printf "\nAutoPhoto Version $version\n"
 	exit
 fi
 
