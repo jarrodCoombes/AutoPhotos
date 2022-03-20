@@ -16,3 +16,4 @@ cd inotify-tools-3.20.2.2
 make
 make install
 ```
+Note: This requires a C compiler to work (for Debian based distros run `sudo apt install build-essential`
