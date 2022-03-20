@@ -17,7 +17,7 @@ fi
 inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e close_write /shares/Photos --includei "\.jpg|\.jpeg" |
 while read -r date time dir file; do
     changed_abs=${dir}${file}
-    small_dir=${dir}${target}
+    small_dir=${dir}${target}/
 	
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  small_dir=$small_dir \n"
       
@@ -28,8 +28,11 @@ while read -r date time dir file; do
 		echo "Creating $small_dir"
 		mkdir $small_dir
 	fi
-
 	
-
-	
+	if [ "$dir" = "$small_dir" ]; then
+		printf "\nFile is in the $small_dir folder, nothing to do"
+	else
+		printf "\nResizing file into the $small_dir folder"
+	fi
+		
 done
