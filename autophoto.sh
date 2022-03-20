@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=0.1.6
+version=0.1.7
 
 printf "\n\n Version $version \n\n\n"
 
@@ -14,7 +14,7 @@ if ! [ $(id -u) = 0 ]
 fi
 
 
-inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e close_write /shares/Photos --includei "\.jpg|\.jpeg" |
+inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e create,close_write /shares/Photos --includei "\.jpg|\.jpeg" |
 while read -r date time dir file; do
     changed_abs=${dir}${file}
     small_dir=${dir}${target}/
