@@ -2,10 +2,10 @@
 
 ## Requirements
 
-inotifywait version 3.2 or later
+inotifywait version 3.20.2.2 or later
 
 
-## Install inotifywait from source  
+### Install inotifywait from source  
 ```
 mkdir /tmp/inotify-tools
 cd /tmp/inotify-tools/
