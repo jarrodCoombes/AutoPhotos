@@ -1,6 +1,8 @@
 #!/bin/sh
 
+version=0.1
 
+printf "\n\n Version $version \n\n\n"
 
 cwd=$(pwd)
 
