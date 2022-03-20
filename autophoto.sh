@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=0.1.5
+version=0.1.6
 
 printf "\n\n Version $version \n\n\n"
 
@@ -27,12 +27,13 @@ while read -r date time dir file; do
 	else
 		echo "Creating $small_dir"
 		mkdir $small_dir
+		chmod 777 $small_dir
 	fi
 	
 	if [ "$dir" = "$small_dir" ]; then
-		printf "\nFile is in the $small_dir folder, nothing to do"
+		printf "\nFile is in the $small_dir folder, nothing to do\n"
 	else
-		printf "\nResizing file into the $small_dir folder"
+		printf "\nResizing file into the $small_dir folder\n"
 	fi
 		
 done
