@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=0.1.7
+version=0.1.8
 
 printf "\n\n Version $version \n\n\n"
 
@@ -22,6 +22,9 @@ while read -r date time dir file; do
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  small_dir=$small_dir \n"
 
     # Check to make sure the file is not allready in $small_dir    
+    
+	echo "${dir##*/} $target "Are they same??"
+	
 	if [ "${dir##*/}" = "$target" ]; then
 		printf "\nFile is in the $small_dir folder, nothing to do\n"
 	else
