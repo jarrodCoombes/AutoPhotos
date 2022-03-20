@@ -4,7 +4,7 @@
 
 cwd=$(pwd)
 
-inotifywait -mr --timefmt '%d/%m/%y %H:%M' --format '%T %w %f' -e close_write /shares/Photos |
+inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e close_write /shares/Photos |
 while read -r date time dir file; do
        changed_abs=${dir}${file}
        changed_rel=${changed_abs#"$cwd"/}
