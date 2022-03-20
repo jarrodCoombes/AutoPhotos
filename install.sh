@@ -3,7 +3,7 @@
 ipath=/usr/local/bin/
 
 #Check to make sure we're being run as root
-if [ "$EUID" -ne 0 ]
+if ! [ $(id -u) = 0 ]
   then echo "Please run as root"
   exit
 fi
