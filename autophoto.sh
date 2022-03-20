@@ -6,6 +6,7 @@ printf "\n\n Version $version \n\n\n"
 
 cwd=$(pwd)
 target=resized
+output_size=1920x1080
 
 #Check to make sure we're being run as root
 if ! [ $(id -u) = 0 ]
@@ -37,7 +38,8 @@ while read -r date time dir file; do
 
 		printf "\nResizing file into the $small_dir folder\n"
 		# Code to resize image goes here
-		convert $changed_abs -resize 1920x1080 $output_file
+		printf "\n  Converting: $changed_abs /n  Output Size:$output_size /n  Output File: $output_file/n" 
+		convert $changed_abs -resize $output_size $output_file
 	fi
 
 		
