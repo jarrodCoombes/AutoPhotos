@@ -22,14 +22,9 @@ while read -r date time dir file; do
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  small_dir=$small_dir \n"
 
     # Check to make sure the file is not allready in $small_dir    
-    
-	echo ${dir##*/} ${target} -- Are they same??
-	
-	if [ "$(echo ${dir} | awk '{print $(NF-1)}' FS=/)" = "$target" ]; then
+    if [ "$(echo ${dir} | awk '{print $(NF-1)}' FS=/)" = "$target" ]; then
 		printf "\nFile is in the $small_dir folder, nothing to do\n"
 	else
-		printf "\nResizing file into the $small_dir folder\n"
-		
 		#Check to see if $small_dir exists or not
 		if [ -d "$small_dir" -a ! -h "$small_dir" ]; then
 			echo "$small_dir found, nothing to do."
@@ -38,13 +33,10 @@ while read -r date time dir file; do
 			mkdir $small_dir
 			chmod 777 $small_dir
 		fi
-	
-	# Code to resize image goes here
-	
+
+		printf "\nResizing file into the $small_dir folder\n"
+		# Code to resize image goes here
 	fi
-		
-		
-	
 
 		
 done
