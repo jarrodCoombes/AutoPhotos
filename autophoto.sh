@@ -15,12 +15,14 @@ if ! [ $(id -u) = 0 ]
 fi
 
 
-inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e close_write /shares/Photos --includei "\.jpg|\.jpeg" |
-while read -r date time dir file; do
-    dir=$(echo $dir | sed 's! !\\ !g')
-	changed_abs=${dir}${file}
-    small_dir=${dir}${target}/
-	output_file=${small_dir}1080-${file}
+inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w%f' -e close_write /shares/Photos |
+  #  grep -Ei '/[^/]*\.(jpg|jpeg)$' |
+while read -r date time changed_abs; do
+    [ -d "$changed_abs" ] && continue # a directory looking like a picture filename was written to: skip this event
+    dir="${changed_abs%/*}/"
+    file="${changed_abs##*/}"
+    small_dir="${dir}${target}/"
+    output_file="${small_dir}"1080-"${file}"
 	
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  small_dir=$small_dir \n"
 
@@ -33,14 +35,14 @@ while read -r date time dir file; do
 			printf "\nFolder $small_dir found, no need to create it.\n"
 		else
 			printf "\nCreating $small_dir \n"
-			mkdir $small_dir
-			chmod 777 $small_dir
+			mkdir "$small_dir"
+			chmod "777 $small_dir"
 		fi
 
 		printf "\nResizing file into the $small_dir folder\n"
 		# Code to resize image goes here
 		printf "\n  Converting: $changed_abs \n  Output Size:$output_size \n  Output File: $output_file\n" 
-		convert $changed_abs -resize $output_size $output_file
+		convert "$changed_abs" -resize "$output_size" "$output_file"
 		printf "\nDone\n\n"
 	fi
 
