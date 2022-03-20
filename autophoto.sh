@@ -18,6 +18,7 @@ inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w %f' -e close_write /s
 while read -r date time dir file; do
     changed_abs=${dir}${file}
     small_dir=${dir}${target}/
+	output_file=$(small_dir)1080-$(file)
 	
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  small_dir=$small_dir \n"
 
@@ -36,7 +37,7 @@ while read -r date time dir file; do
 
 		printf "\nResizing file into the $small_dir folder\n"
 		# Code to resize image goes here
-		convert $changed_abs -resize 1920x1080 $small_dir
+		convert $changed_abs -resize 1920x1080 $output_file
 	fi
 
 		
