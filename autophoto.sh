@@ -16,7 +16,7 @@ fi
 
 
 inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w%f' -e close_write /shares/Photos |
-  #  grep -Ei '/[^/]*\.(jpg|jpeg)$' |
+    grep --line-buffered -Ei '/[^/]*\.(jpg|jpeg)$' |
 while read -r date time changed_abs; do
     [ -d "$changed_abs" ] && continue # a directory looking like a picture filename was written to: skip this event
     dir="${changed_abs%/*}/"
