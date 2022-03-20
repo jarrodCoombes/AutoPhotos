@@ -2,7 +2,8 @@
 
 ## Requirements
 
-inotifywait version 3.20.2.2 or later
+-inotifywait version 3.20.2.2 or later
+-imagemagick version 6
 
 
 ### Install inotifywait from source  
@@ -17,3 +18,10 @@ make
 make install
 ```
 Note: This requires a C compiler to work (for Debian based distros run `sudo apt install build-essential`
+
+### Install Imagemagick
+
+For Debian/Ubuntu
+```
+apt install imagemagick
+```
