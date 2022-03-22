@@ -22,10 +22,10 @@ while read -r date time changed_abs; do
 
     [ -d "$changed_abs" ] && continue # a directory looking like a picture filename was written to: skip this event
 
-    dir="${changed_abs%/*}/"  					#The full path of the folder the file is in.
-    file="${changed_abs##*/}" 					#The file name of the file
-    resized_dir="${dir}resized/"				#The target directory in which the resized image will be put in.
-    output_file="${resized_dir}"1080-"${file}"	#The filename of the resized file.
+    dir="${changed_abs%/*}/"  						#The full path of the folder the file is in.
+    file="${changed_abs##*/}" 						#The file name of the file
+    resized_dir="${dir}resized/"					#The target directory in which the resized image will be put in.
+    output_file="${resized_dir}""${file}"-resized	#The filename of the resized file.
 	
 	printf "\nDetected file change, sleeping $delay seconds before processing new files\n"
 	sleep "$delay"
