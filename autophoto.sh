@@ -26,24 +26,25 @@ while read -r date time changed_abs; do
     file="${changed_abs##*/}" 						#The file name of the file
     resized_dir="${dir}resized/"					#The target directory in which the resized image will be put in.
     output_file="${resized_dir}"resized-"${file}"	#The filename of the resized file.
-	
-	printf "\nDetected file change, sleeping $delay seconds before processing new files\n"
+
+	printf "\nINFO:Detected file change, sleeping $delay seconds before processing new files\n"
+    printf "\nINFO:File $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  resized_dir=$resized_dir \n"
+
 	sleep "$delay"
 	
-    printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  resized_dir=$resized_dir \n"
 
 	#Check to see if $resized_dir exists if not then create it.
 	if [ -d "$resized_dir" -a ! -h "$resized_dir" ]; then
-		printf "\nFolder $resized_dir found, no need to create it.\n"
+		printf "\nINFO:Folder $resized_dir found, no need to create it.\n"
 	else
-		printf "\nCreating $resized_dir \n"
+		printf "\nINFO:Creating $resized_dir \n"
 		mkdir "$resized_dir"
 		chmod 777 "$resized_dir"
 	fi
 
 	# printf "\nResizing file into the $resized_dir folder\n"
-	printf "\n  Converting: $changed_abs \n  Output Size:$output_size \n  Output File: $output_file\n" 
+	printf "\nINFO:Converting: $changed_abs \n  Output Size:$output_size \n  Output File: $output_file\n" 
 	convert "$changed_abs" -resize "$output_size" "$output_file"
-	printf "\nDone\n\n"
+	printf "\nINFO:Done\n\n"
 		
 done
