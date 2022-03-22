@@ -8,6 +8,7 @@ if [ "$1" = "-v" ]; then
 fi
 
 output_size=1280x960 #Output resolution for the resized images.
+delay=10			 #Delay before processing new detected files in seconds
 
 #Check to make sure we're being run as root
 if ! [ $(id -u) = 0 ]
@@ -25,6 +26,9 @@ while read -r date time changed_abs; do
     file="${changed_abs##*/}" 					#The file name of the file
     resized_dir="${dir}resized/"				#The target directory in which the resized image will be put in.
     output_file="${resized_dir}"1080-"${file}"	#The filename of the resized file.
+	
+	printf "\nDetected file change, sleeping $delay seconds before processing new files\n"
+	sleep "$delay"
 	
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  resized_dir=$resized_dir \n"
 
