@@ -17,7 +17,7 @@ if ! [ $(id -u) = 0 ]
 fi
 
 
-inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w%f' -e close_write --exclude '/"${target}"(/.*)?$' /shares/Photos |
+inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w%f' -e close_write --exclude '/resized(/.*)?$' /shares/Photos |
     grep --line-buffered -Ei '/[^/]*\.(jpg|jpeg)$' |
 while read -r date time changed_abs; do
 
@@ -25,7 +25,7 @@ while read -r date time changed_abs; do
 
     dir="${changed_abs%/*}/"  					#The full path of the folder the file is in.
     file="${changed_abs##*/}" 					#The file name of the file
-    small_dir="${dir}${target}/"				#The targer directory in which the resized image will be put in.
+    small_dir="${dir}${target}/"				#The target directory in which the resized image will be put in.
     output_file="${small_dir}"1080-"${file}"	#The filename of the resized file.
 	
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  small_dir=$small_dir \n"
