@@ -17,7 +17,7 @@ if ! [ $(id -u) = 0 ]
 fi
 
 
-inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w%f' -e close_write --exclude '/resized(/.*)?$' /shares/Photos |
+inotifywait -mr --timefmt '%m/%d/%y %H:%M' --format '%T %w%f' -e close_write --exclude '/"${target}"(/.*)?$' /shares/Photos |
     grep --line-buffered -Ei '/[^/]*\.(jpg|jpeg)$' |
 while read -r date time changed_abs; do
 
