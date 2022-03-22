@@ -23,7 +23,7 @@ while read -r date time changed_abs; do
 
     dir="${changed_abs%/*}/"  					#The full path of the folder the file is in.
     file="${changed_abs##*/}" 					#The file name of the file
-    resized_dir="${dir}/resized/"				#The target directory in which the resized image will be put in.
+    resized_dir="${dir}resized/"				#The target directory in which the resized image will be put in.
     output_file="${resized_dir}"1080-"${file}"	#The filename of the resized file.
 	
     printf "\nFile $changed_abs was changed or created\n  dir=$dir \n  file=$file \n  resized_dir=$resized_dir \n"
