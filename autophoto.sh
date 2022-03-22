@@ -7,7 +7,7 @@ if [ "$1" = "-v" ]; then
 	exit 0
 fi
 
-output_size=1920x1080 #Output resolution for the resized images.
+output_size=1280x960 #Output resolution for the resized images.
 
 #Check to make sure we're being run as root
 if ! [ $(id -u) = 0 ]
